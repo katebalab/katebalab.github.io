@@ -1,6 +1,18 @@
+#root {
+    display: flex;
+}
+.pic-container {
+    margin: 15px;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
 .pic-container div {
     padding: 0;
     margin: 0;
     min-width: 300px;
-    min-height: 500px;
+    min-height: 400px;
 }
