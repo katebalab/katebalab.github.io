@@ -2,15 +2,23 @@ Array.prototype.random = function () {
     return this[Math.floor((Math.random() * this.length))];
 }
 
-function initWho() {
-    let pics = ['monkey', 'naruto', 'pirate'];
-    let picComponent = document.querySelector('#who');
+String.prototype.toCapitalized = function () {
+    let first = this[0].toUpperCase();
+    let rest = this.slice(1)
+    return `${first}${rest}`
+}
+
+function initComponent(name, pics) {
+    let picComponent = document.querySelector(`#${name}`);
     let button = picComponent.querySelector('button');
     let picContainer = picComponent.querySelector('div');
 
     button.onclick = function () {
-        picContainer.innerHTML = `<img src="resources/images/who/${pics.random()}.jpg" alt="sample image">`
+        let pic = pics.random()
+        picContainer.innerHTML = `<img src="resources/images/${name}/${pic}.jpg" alt="sample image"><p>${pic.toCapitalized()}</p>`
     }
 }
 
-initWho()
+let whoPics = ['monkey', 'naruto', 'pirate'];
+
+initComponent('who', whoPics)
