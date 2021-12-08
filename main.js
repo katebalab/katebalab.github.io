@@ -22,3 +22,15 @@ function initComponent(name, pics) {
 let whoPics = ['monkey', 'naruto', 'pirate'];
 
 initComponent('who', whoPics)
+
+let whatPics = ['banana', 'mask', 'iphone']
+
+initComponent('what', whatPics)
+
+let wherePics = ['castle', 'mountain', 'space']
+
+initComponent('where', wherePics)
+
+let whenPics = ['morning', 'night', 'winter']
+
+initComponent('when', whenPics)
