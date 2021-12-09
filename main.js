@@ -8,26 +8,51 @@ String.prototype.toCapitalized = function () {
     return `${first}${rest}`;
 }
 
-function initComponent(name, pics) {
-    let picComponent = document.querySelector(`#${name}`);
-    let button = picComponent.querySelector('button');
-    let text = picComponent.querySelector('p');
-    let picContainer = picComponent.querySelector('div');
+class TrainingPic extends HTMLElement {
+    #picContainer = document.createElement('div');
+    #text = document.createElement('p');
+    #button = document.createElement('button');
+    #pics = [];
+    #oldPic = "";
+    #type = "";
 
-    button.onclick = function () {
-        let pic = pics.random();
-        picContainer.innerHTML = `<img src="resources/images/${name}/${pic}.jpg" alt="sample image">`;
-        text.innerText = pic.toCapitalized();
+    constructor() {
+        super();
+        this.setAttribute('class', 'pic-container')
+
+        this.#type = this.getAttribute('type').toLowerCase().trim();
+        this.#button.innerText = this.#type.toCapitalized();
+        this.#getPicNames().then(() => {
+            this.#button.onclick = this.#buttonOnClickListener();
+
+            this.appendChild(this.#picContainer);
+            this.appendChild(this.#text);
+            this.appendChild(this.#button);
+
+            this.#button.click();
+        });
     }
-    button.click();
+
+    async #getPicNames() {
+        const response = await fetch(`https://api.github.com/repos/katebalab/katebalab.github.io/contents/resources/images/${this.#type}`);
+        const data = await response.json();
+        console.log(data);
+        this.#pics = data.map((obj) => {
+            return obj.name;
+        })
+    }
+
+    #buttonOnClickListener() {
+        return () => {
+            let pic = this.#pics.random();
+            while (pic === this.#oldPic) {
+                pic = this.#pics.random();
+            }
+            this.#oldPic = pic;
+            this.#picContainer.innerHTML = `<img src="resources/images/${this.#type}/${pic}" alt="sample image">`;
+            this.#text.innerText = pic.substr(0, pic.lastIndexOf('.')).toCapitalized() || pic.toCapitalized();
+        }
+    }
 }
 
-let whoPics = ['monkey', 'naruto', 'pirate'];
-let whatPics = ['banana', 'mask', 'iphone'];
-let wherePics = ['castle', 'mountain', 'space'];
-let whenPics = ['morning', 'night', 'winter'];
-
-initComponent('who', whoPics);
-initComponent('what', whatPics);
-initComponent('where', wherePics);
-initComponent('when', whenPics);
+customElements.define('training-pic', TrainingPic);
