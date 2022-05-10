@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" class="h100">
+<head>
+    <link rel="stylesheet" href="/questionnaire/styles.css">
+    <script src="/questionnaire/questionnaire.js"></script>
+    <meta charset="UTF-8">
+    <title>Анкета</title>
+</head>
+<body class="h100">
+<div class="flex-container h100">
+    <div>
+        <h1>Анкета на вступ до Євросоюзу</h1>
+
+        <div>
+            <p>Являетесь ли Вы гражданином Украины?</p>
+            <label><input type="radio" name="citizen" value="yes"> Да</label>
+            <label><input type="radio" name="citizen" value="no"> Нет</label>
+        </div>
+
+        <div>
+            <p>Заслуживает ли Украина вступиь в ЕС?</p>
+            <label><input type="radio" name="deserve" value="yes"> Да</label>
+            <label><input type="radio" name="deserve" value="no"> Нет</label>
+        </div>
+
+        <div>
+            <p>Что означает слово "паляниця"?</p>
+            <label><input type="radio" name="palyanytsa" value="strawberry">Клубника</label>
+            <label><input type="radio" name="palyanytsa" value="bread">Домашний хлеб</label>
+            <label><input type="radio" name="palyanytsa" value="ashtray">Пепельница</label>
+        </div>
+
+        <div>
+            <button onclick="validate()">Submit</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

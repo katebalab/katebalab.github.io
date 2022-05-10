@@ -1,0 +1,37 @@
+.h100 {
+    height: 100vh;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.flag-bg {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background: url("https://r4.wallpaperflare.com/wallpaper/437/832/928/yellow-blue-ukraine-the-flag-of-ukraine-wallpaper-5e3f059b90dc9fb2de901d0c005b70fc.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.zrada-bg {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background: url("https://images.pexels.com/photos/143580/pexels-photo-143580.jpeg");
+    background-size: cover;
+    background-position: center;
+}
+
+.soft-bg {
+    background-color: #808080C0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
